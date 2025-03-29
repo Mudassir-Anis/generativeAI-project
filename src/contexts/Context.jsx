@@ -33,7 +33,8 @@ export const ContextProvider = (props) => {
     // Store the new request reference
     const requestObject = { abort: false };
     latestRequestRef.current = requestObject;
-
+    const input1 = input;
+    setInput("");
     setResultData("");
     setLoading(true);
     setShowResult(true);
@@ -43,9 +44,9 @@ export const ContextProvider = (props) => {
       response = await run(prompt);
       setRecentPrompt(prompt);
     } else {
-      setPrevPrompts((prev) => [...prev, input]);
-      setRecentPrompt(input);
-      response = await run(input);
+      setPrevPrompts((prev) => [...prev, input1]);
+      setRecentPrompt(input1);
+      response = await run(input1);
     }
     const responseArray = response
       .split("**")
